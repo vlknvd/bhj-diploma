@@ -11,6 +11,7 @@ class Modal {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
+  
   constructor(element){
     if(!element) {
       throw new Error('Элемент не существует');

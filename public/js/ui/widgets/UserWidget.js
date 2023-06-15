@@ -25,6 +25,7 @@ class UserWidget {
    * в элемент .user-name устанавливает имя
    * авторизованного пользователя
    * */
+  
   update(){
     if(User.current()){
       document.querySelector('.user-name').textContent = User.current().name;

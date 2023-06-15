@@ -42,13 +42,13 @@ class Sidebar {
     })
     const login = document.querySelector('.menu-item_login');
     login.addEventListener('click', () => {
-      App.getModal('login').open()
+      App.getModal('login').open();
     })
     const logout = document.querySelector('.menu-item_logout');
     logout.addEventListener('click', () => {
       User.logout(response => {
-        if(response.success === true){
-          App.setState('init')
+        if(response && response.success){
+          App.setState('init');
         }
       })
     })

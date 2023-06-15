@@ -14,6 +14,12 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
+    if(!element) {
+      throw new Error('Элемент не существует');
+    }
+    this.element = element;
+    this.registerEvents();
+    this.update();
 
   }
 
@@ -25,7 +31,10 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-
+    const create = document.querySelector('.create-account');
+    create.addEventListener('click', () => {
+      App.getModal('new-account').open();
+    })
   }
 
   /**
@@ -39,7 +48,7 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-
+    
   }
 
   /**
