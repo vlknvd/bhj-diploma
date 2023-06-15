@@ -47,7 +47,7 @@ class Sidebar {
     const logout = document.querySelector('.menu-item_logout');
     logout.addEventListener('click', () => {
       User.logout(response => {
-        if(response.success = 'true'){
+        if(response.success === true){
           App.setState('init')
         }
       })

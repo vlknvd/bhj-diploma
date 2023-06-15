@@ -14,9 +14,7 @@ const createRequest = (options = {}) => {
         }
         url = options.url;
     } else {
-        for (const item in Object.entries(options.data)) {
-            const key = item[0];
-            const value = item[1];
+        for (const [key,value] in Object.entries(options.data)) {
             formData.append[key, value];
         }
         url = options.url;

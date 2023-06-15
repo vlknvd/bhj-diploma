@@ -27,7 +27,7 @@ class Modal {
   registerEvents() {
     const modalBtn = Array.from(this.element.querySelectorAll('button'));
     modalBtn.forEach(el => {
-      if(el.dataset.dismiss = 'modal'){
+      if(el.dataset.dismiss === 'modal'){
         el.addEventListener('click', this.onClose())
       }
     })
@@ -45,7 +45,7 @@ class Modal {
    * со значением «block»
    * */
   open() {
-    this.element.setAttribute('display', 'block');
+    this.element.style.display = 'block';
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
