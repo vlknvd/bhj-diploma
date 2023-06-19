@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 /**
  * Класс CreateTransactionForm управляет формой
  * создания новой транзакции
@@ -8,7 +10,8 @@ class CreateTransactionForm extends AsyncForm {
    * метод renderAccountsList
    * */
   constructor(element) {
-    super(element)
+    super(element);
+    this.renderAccountsList();
   }
 
   /**
@@ -16,7 +19,6 @@ class CreateTransactionForm extends AsyncForm {
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
-
   }
 
   /**

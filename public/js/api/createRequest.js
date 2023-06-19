@@ -5,17 +5,22 @@
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
     const formData = new FormData;
-    let url;
+    let url, arr;
 
     if(options.method === 'GET') {
-        if(options.data) {
-            let dataValue = Object.values(options.data);
-            url = options.url + '?' + dataValue[0] + '&' + dataValue[1];
+        if (options.data) {
+            for (let i of Object.entries(options.data)) {
+                const key = i[0],
+                    value = i[1];
+                arr.push(key + '=' + value);
+                url = options.url + '?' + arr.join('&')
+            }
+        } else {
+            url = options.url;
         }
-        url = options.url;
     } else {
         for (const [key,value] in Object.entries(options.data)) {
-            formData.append[key, value];
+            formData.append(key, value);
         }
         
         url = options.url;
