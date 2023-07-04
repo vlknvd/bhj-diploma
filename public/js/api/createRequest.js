@@ -5,16 +5,15 @@
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
     const formData = new FormData;
-    let url; 
-    let arr = [];
+    let url = [];
 
     if(options.method === 'GET' && options.data) {
         for (let [key,value] of Object.entries(options.data)) {
-            arr.push(key + '=' + value);
-            url = options.url + '?' + arr.join('&')
-        }    
+            url.push(key + '=' + value);
+        }   
+        url = options.url + '?' + url.join('&'); 
     } else if (!(options.method === 'GET')) {
-        for (const [key,value] in Object.entries(options.data)) {
+        for (let [key,value] of Object.entries(options.data)) {
             formData.append(key, value);
         }
         
@@ -29,6 +28,5 @@ const createRequest = (options = {}) => {
     } catch (e) {
         return new Error('Что-то пошло не так', e);
     }
-
-    xhr.onload = () => options.callback(xhr.error, xhr.response);
+    xhr.onload = () => options.callback(xhr.err, xhr.response);
 };

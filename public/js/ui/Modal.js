@@ -28,7 +28,7 @@ class Modal {
   registerEvents() {
     const modalBtn = Array.from(this.element.querySelectorAll('button'));
     modalBtn.forEach(el => {
-      if(el.dataset.dismiss === 'modal'){
+      if(el.dataset.dismiss = 'modal'){
         el.addEventListener('click', () => this.onClose())
       }
     })
