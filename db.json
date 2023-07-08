@@ -91,6 +91,16 @@
       "name": "ф",
       "user_id": "2pqntejoljhglycw",
       "id": "2pqnteu4ljok994n"
+    },
+    {
+      "name": "dd",
+      "user_id": "2pqntejoljhglycw",
+      "id": "2pqntegcljrfi8ie"
+    },
+    {
+      "name": "yjdsq cxtn",
+      "user_id": "2pqntejoljhglycw",
+      "id": "2pqnt8nwljuij9qh"
     }
   ],
   "transactions": [
@@ -336,6 +346,24 @@
       "account_id": "2pqntarcljoisszo",
       "user_id": "2pqntejoljhglycw",
       "created_at": "2023-07-04T17:31:15.175Z"
+    },
+    {
+      "id": "2pqnt63oljrgg30u",
+      "type": "income",
+      "name": "ф",
+      "sum": 6000,
+      "account_id": "2pqntarcljoisszo",
+      "user_id": "2pqntejoljhglycw",
+      "created_at": "2023-07-06T18:02:01.421Z"
+    },
+    {
+      "id": "2pqnt6csljuijrqc",
+      "type": "income",
+      "name": "ssssssssssssssssssssssssssss",
+      "sum": 50000,
+      "account_id": "2pqnt8nwljuij9qh",
+      "user_id": "2pqntejoljhglycw",
+      "created_at": "2023-07-08T21:24:11.171Z"
     }
   ]
 }

@@ -34,7 +34,7 @@ class AccountsWidget {
     this.element.addEventListener('click', (e) => {
       if(e.target.classList.contains('create-account')){
         App.getModal('createAccount').open();
-      } else if (e.target.classList.contains('account')) {
+      } else if (e.target.closest(`li`).classList.contains(`account`)) {
         this.onSelectAccount(e.target.closest('li'));
       }
     })
@@ -89,7 +89,7 @@ class AccountsWidget {
    * item - объект с данными о счёте
    * */
   getAccountHTML(item){
-    return `<li class = 'account'>
+    return `<li class = 'account' data-id = ${item.id}>
     <a href='#'>
     <span>${item.name}</span> /
     <span>${item.sum} ₽</span>

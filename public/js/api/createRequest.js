@@ -5,14 +5,14 @@
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
     const formData = new FormData;
-    let url = [];
+    let url = [options.url + '?'];
 
     if(options.method === 'GET' && options.data) {
         for (let [key,value] of Object.entries(options.data)) {
             url.push(key + '=' + value);
         }   
         url = options.url + '?' + url.join('&'); 
-    } else if (!(options.method === 'GET')) {
+    } else if (!(options.method === 'GET') && options.data) {
         for (let [key,value] of Object.entries(options.data)) {
             formData.append(key, value);
         }

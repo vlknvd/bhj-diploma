@@ -37,7 +37,7 @@ class TransactionsPage {
       if(event.target.closest('.remove-account')){
         this.removeAccount();
       } else if(event.target.closest('.transaction__remove')){
-        this.removeTransaction({id: this.event.dataset.id})
+        this.removeTransaction();
       }
     })
   }
@@ -52,16 +52,17 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    if(this.lastOptions = {}){
+    if(this.lastOptions === null){
       return;
     }
     if(confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove({id: this.lastOptions.account_id}, (err, response) => {
-        if(response.success){
-          this.clear();
+      Account.remove(this.lastOptions.account_id, (err, response) => {
+        if(response.success){ 
           App.updateWidgets();
+          App.updateForms();
         }
       })
+      this.clear();
     }
 
   }
@@ -75,12 +76,11 @@ class TransactionsPage {
   removeTransaction( id ) {
     if(confirm('Вы действительно хотите удалить эту транзакцию?')){
       Transaction.remove(id, (err, response) => {
-        if(response.success){
+        if(response && response.success){
           App.update();
         }
       })
     }
-
   }
 
   /**
@@ -122,7 +122,7 @@ class TransactionsPage {
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name){
-    document.querySelector('.content-title').textContent = name;
+    document.querySelector('.content-title').textContent = `${name.data.name}`;
   }
 
   /**
@@ -169,7 +169,7 @@ class TransactionsPage {
   renderTransactions(data){
     document.querySelectorAll(`.transaction`).forEach(el => el.remove());
     data.forEach(el => {
-      document.querySelector(`.content`).insertAdjacentElement(`beforeend`, this.getTransactionHTML(el));
+      document.querySelector(`.content`).insertAdjacentHTML(`beforeend`, this.getTransactionHTML(el));
     });
   }
 }
