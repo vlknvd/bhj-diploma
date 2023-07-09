@@ -37,7 +37,7 @@ class TransactionsPage {
       if(event.target.closest('.remove-account')){
         this.removeAccount();
       } else if(event.target.closest('.transaction__remove')){
-        this.removeTransaction();
+        this.removeTransaction(event.target.dataset.id);
       }
     })
   }
@@ -56,7 +56,7 @@ class TransactionsPage {
       return;
     }
     if(confirm('Вы действительно хотите удалить счёт?')) {
-      Account.remove(this.lastOptions.account_id, (err, response) => {
+      Account.remove({id: this.lastOptions.account_id}, (err, response) => {
         if(response.success){ 
           App.updateWidgets();
           App.updateForms();
@@ -75,7 +75,7 @@ class TransactionsPage {
    * */
   removeTransaction( id ) {
     if(confirm('Вы действительно хотите удалить эту транзакцию?')){
-      Transaction.remove(id, (err, response) => {
+      Transaction.remove({ id }, (err, response) => {
         if(response && response.success){
           App.update();
         }
